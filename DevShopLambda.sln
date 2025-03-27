@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastrador", "Cadastrador\Cadastrador.csproj", "{B01AF8F9-9340-56A4-643D-4743EC5247E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{82DDB7F4-5788-483C-994A-0EA1540942C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coletor", "Coletor\Coletor.csproj", "{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B01AF8F9-9340-56A4-643D-4743EC5247E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01AF8F9-9340-56A4-643D-4743EC5247E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01AF8F9-9340-56A4-643D-4743EC5247E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01AF8F9-9340-56A4-643D-4743EC5247E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82DDB7F4-5788-483C-994A-0EA1540942C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82DDB7F4-5788-483C-994A-0EA1540942C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82DDB7F4-5788-483C-994A-0EA1540942C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82DDB7F4-5788-483C-994A-0EA1540942C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C690AAD4-1FEF-4805-BEEE-5C7CC40BC9DB}
+	EndGlobalSection
+EndGlobal

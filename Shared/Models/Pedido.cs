@@ -1,0 +1,41 @@
+﻿using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+
+namespace Shared.Models
+{
+    public enum StatusDoPedido
+    {
+        Coletado,
+        Pago,
+        Faturado
+    }
+
+    [DynamoDBTable("pedidos")]
+    public class Pedido
+    {
+        public Pedido()
+        {
+            Id = Guid.NewGuid().ToString();
+            DataDeCriacao = DateTime.UtcNow;
+        }
+        public string Id { get; set; }
+
+        public decimal ValorTotal { get; set; }
+
+        public DateTime DataDeCriacao { get; set; }
+
+        public List<Produto> Produtos { get; set; }
+
+        public Cliente Cliente { get; set; }
+
+        public Pagamento Pagamento { get; set; }
+
+        public string? JustificativaDeCancelamento { get; set; }
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public StatusDoPedido Status { get; set; }
+        public bool Cancelado { get; set; }
+    }
+}
