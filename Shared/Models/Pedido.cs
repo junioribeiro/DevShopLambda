@@ -8,6 +8,7 @@ namespace Shared.Models
     public enum StatusDoPedido
     {
         Coletado,
+        Reservado,
         Pago,
         Faturado
     }

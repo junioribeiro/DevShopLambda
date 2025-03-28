@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coletor", "Coletor\Coletor.csproj", "{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservador", "Reservador\Reservador.csproj", "{95211488-E9FD-45E3-2A6A-020218DAB4F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86C8777B-AA2E-372B-AECE-B7CDB3DF6CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95211488-E9FD-45E3-2A6A-020218DAB4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95211488-E9FD-45E3-2A6A-020218DAB4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95211488-E9FD-45E3-2A6A-020218DAB4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95211488-E9FD-45E3-2A6A-020218DAB4F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
