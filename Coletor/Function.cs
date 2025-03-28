@@ -16,7 +16,6 @@ public class Function
 {
     public async Task FunctionHandler(DynamoDBEvent dynamoEvent, ILambdaContext context)
     {
-
         foreach (var record in dynamoEvent.Records)
         {
             if (record.EventName == "INSERT")
@@ -63,10 +62,10 @@ public class Function
 
     private async Task<Produto?> ObterProdutoDoDynamoDBAsync(string id)
     {
-        var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
+        var client = new AmazonDynamoDBClient(AmazonExtension.region);
         var request = new QueryRequest
         {
-            TableName = "estoque",
+            TableName = EnumTables.estoque.ToString(),
             KeyConditionExpression = "Id = :v_id",
             ExpressionAttributeValues = new Dictionary<string, AttributeValue> { { ":v_id", new AttributeValue { S = id } } }
         };

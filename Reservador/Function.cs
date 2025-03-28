@@ -20,11 +20,12 @@ public class Function
 
     public Function()
     {
-        _amazonDynamoDBClient = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
+        _amazonDynamoDBClient = new AmazonDynamoDBClient(AmazonExtension.region);
     }
 
     public async Task FunctionHandler(SQSEvent evnt, ILambdaContext context)
     {
+        var result = EnumTables.estoque.ToString();
         foreach (var message in evnt.Records)
         {
             await ProcessMessageAsync(message, context);
@@ -82,7 +83,7 @@ public class Function
     {
         var request = new UpdateItemRequest
         {
-            TableName = "estoque",
+            TableName = EnumTables.estoque.ToString(),
             ReturnValues = "NONE",
             Key = new Dictionary<string, AttributeValue>
                 {
@@ -103,7 +104,7 @@ public class Function
     {
         var request = new UpdateItemRequest
         {
-            TableName = "estoque",
+            TableName = EnumTables.estoque.ToString(),
             ReturnValues = "NONE",
             Key = new Dictionary<string, AttributeValue>
                 {

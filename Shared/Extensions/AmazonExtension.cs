@@ -13,15 +13,20 @@ namespace Shared.Extensions
 {
     public static class AmazonExtension
     {
+        public static RegionEndpoint region => RegionEndpoint.USEast1;
+        public static string SqsQueueUrl  => "https://sqs.us-east-1.amazonaws.com/491085419902/";
+        public static string SnsQueueUrl => "";
+                
+
         public static async Task SalvarAsync(this Pedido pedido)
         {
-            var client = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
+            var client = new AmazonDynamoDBClient(region);
             var context = new DynamoDBContext(client);
             await context.SaveAsync(pedido);
         }
         public static T ToObject<T>(this Dictionary<string, AttributeValue> dictionary)
         {
-            var client = new AmazonDynamoDBClient(RegionEndpoint.SAEast1);
+            var client = new AmazonDynamoDBClient(region);
             var context = new DynamoDBContext(client);
 
             var doc = Document.FromAttributeMap(dictionary);
@@ -29,18 +34,18 @@ namespace Shared.Extensions
         }
 
         public static Dictionary<string, AttributeValue> ToDynamoDbAttributes(this Dictionary<string, DynamoDBEvent.AttributeValue> obj)
-        {           
+        {
             var attributes = Document.FromJson(obj.ToJson()).ToAttributeMap();
             return attributes;
         }
 
         public static async Task EnviarParaFila(EnumFilasSQS fila, Pedido pedido)
         {
-            var json = JsonSerializer.Serialize<Pedido>(pedido);
-            var client = new AmazonSQSClient(RegionEndpoint.USEast1);
+            var json = JsonSerializer.Serialize(pedido);
+            var client = new AmazonSQSClient(region);
             var request = new SendMessageRequest
             {
-                QueueUrl = $"https://sqs.us-east-1.amazonaws.com/491085419902/{fila}",
+                QueueUrl = $"{SqsQueueUrl}{fila}",
                 MessageBody = json
             };
 
