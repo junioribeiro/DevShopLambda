@@ -1,0 +1,22 @@
+### Volumes
+volumes:      
+  postgres-data:
+  pgadmin-data:
+
+### Redes
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
+
+services:
+  upload.s3.api:
+    image: ${DOCKER_REGISTRY-}uploads3api
+    build:
+      context: .
+      dockerfile: Upload.S3.API/Dockerfile
+  postgresdb:
+    image: postgres:alpine
+    
+  pgadmin:
+    image: dpage/pgadmin4  

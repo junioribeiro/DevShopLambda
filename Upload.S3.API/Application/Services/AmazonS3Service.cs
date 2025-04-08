@@ -1,10 +1,12 @@
 ﻿using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Transfer;
+using Microsoft.Extensions.Options;
+using Upload.S3.API.Application.Domain;
 
 namespace Upload.S3.API.Application.Services
 {
-    public class AmazonS3Service
+    public class AmazonS3Service : IAmazonS3Service
     {
         public string AwsKeyId { get; private set; }
         public string AwsKeySecret { get; private set; }
@@ -12,11 +14,13 @@ namespace Upload.S3.API.Application.Services
 
         private readonly IAmazonS3 _amazonS3Client;
 
-        public AmazonS3Service()
+        public AmazonS3Service(IOptions<AWSCredentialSetup> credential)
         {
-            AwsKeyId = "";
-            AwsKeySecret = "";
+            AwsKeyId = credential.Value.AwsKeyId;
+            AwsKeySecret = credential.Value.AwsKeySecret;
+
             awsCredentials = new BasicAWSCredentials(AwsKeyId, AwsKeySecret);
+            
             var config = new AmazonS3Config
             {
                 RegionEndpoint = Amazon.RegionEndpoint.USEast1

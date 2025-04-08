@@ -7,8 +7,8 @@ namespace Upload.S3.API.Application.Infrastructure
         public NpgsqlConnection Connection { get; set; }
         public DbSession(IConfiguration configuration)
         {
-            Connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"));
-            Connection.Open();
+            //Connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            //Connection.Open();
         }
 
         public void Dispose()
