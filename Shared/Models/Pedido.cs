@@ -21,6 +21,8 @@ namespace Shared.Models
             Id = Guid.NewGuid().ToString();
             DataDeCriacao = DateTime.UtcNow;
         }
+
+        [DynamoDBHashKey(nameof(Id))]
         public string Id { get; set; }
 
         public decimal ValorTotal { get; set; }
