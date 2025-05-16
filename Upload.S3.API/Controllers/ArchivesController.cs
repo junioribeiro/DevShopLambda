@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Net;
+using System.Net.Http;
 using Upload.S3.API.Application.Domain;
 using Upload.S3.API.Application.Services;
 using Upload.S3.API.Models;
@@ -26,14 +27,16 @@ namespace Upload.S3.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ActionResult> AddArchive([FromForm] ArchiveViewModel model)
         {
+            var bucket = "junio.app";
             try
             {                
                 var key = $"medias/{Guid.NewGuid()}";
-                var uploadFile = await _amazonS3Service.UploadFileAsync("junio.app", key, model.Path);
+                var uploadFile = await _amazonS3Service.UploadFileAsync(bucket, key, model.Path);
+                var urlPreAsign = await _amazonS3Service.GeneratePresignedURL(bucket, key);
 
                 if (!uploadFile)
                     return StatusCode(500, "fail in add archive");
-                return Ok();
+                return Ok(urlPreAsign);
                 //var archive = new Archive(model.Title, key);
                 //var result = _archiveRepository.AddArchive(archive);
                 //return Ok(result);
@@ -56,5 +59,14 @@ namespace Upload.S3.API.Controllers
             return Ok(files);
 
         }
+
+        //public async Task<bool> UploadObject(string filePath, string url)
+        //{
+        //    using var streamContent = new StreamContent(
+        //        new FileStream(filePath, FileMode.Open, FileAccess.Read));
+
+        //    var response = await HttpClient.PutAsync(url, streamContent);
+        //    return response.IsSuccessStatusCode;
+        //}
     }
 }
